@@ -93,7 +93,6 @@ local.properties
 
 #20210607 추가
 .settings
-.git
 .project
 .properties
 .classpath
