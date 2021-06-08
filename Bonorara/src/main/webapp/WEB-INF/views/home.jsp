@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>
-	Hello world!~!~~!~! 깃허브 테스트 어렵당~_~
+헬로월드 깃허브 어렵다..
+	Hello world!~!~~!~! ê¹íë¸ íì¤í¸ ì´ë µë¹~_~
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
