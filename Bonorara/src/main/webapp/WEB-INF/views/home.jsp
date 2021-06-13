@@ -24,7 +24,7 @@
         <div class="container">
 		<div class="row">
 			<%-- <c:forEach var="board" items="${popularBoard}" varStatus="status"> --%>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<div class="card shadow-sm">
 						<div class="card-body">
 							<h4 class="card-title" style="cursor: pointer" onclick="">게시판1</h4>
@@ -59,7 +59,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<div class="card shadow-sm">
 						<div class="card-body">
 							<h4 class="card-title" style="cursor: pointer" onclick="">게시판2</h4>
@@ -94,7 +94,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<div class="card shadow-sm">
 						<div class="card-body">
 							<h4 class="card-title" style="cursor: pointer" onclick="">게시판3</h4>
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<div class="card shadow-sm">
 						<div class="card-body">
 							<h4 class="card-title" style="cursor: pointer" onclick="">게시판4</h4>
@@ -210,4 +210,3 @@
 </body>
 
 </html>
-
