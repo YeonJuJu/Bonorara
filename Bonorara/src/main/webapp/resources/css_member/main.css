@@ -260,7 +260,7 @@ iframe {
   min-height: 100vh;
   display: block;
   background-color: #f7f7f7;
-  padding: 173px 55px 55px 55px;
+  padding: 55px 55px 55px 55px;
 }
 
 .login100-form-title {
@@ -268,6 +268,7 @@ iframe {
   display: block;
   font-family: Poppins-Regular;
   font-size: 30px;
+  font-weight: bold;
   color: #333333;
   line-height: 1.2;
   text-align: center;
