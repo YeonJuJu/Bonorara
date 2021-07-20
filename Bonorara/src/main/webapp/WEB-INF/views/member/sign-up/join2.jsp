@@ -20,67 +20,64 @@
 	<link rel="stylesheet" type="text/css" href="${path}resources/vendor_member/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="${path}resources/css_member/util.css">
 	<link rel="stylesheet" type="text/css" href="${path}resources/css_member/main.css">
+
+	<script>
+		function doAction(){
+			alert('doAction();');
+		}
+	</script>
+
 </head>
 <body style="background-color: #666666;">
 	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-43">
-						Login to continue
+				<form class="login100-form validate-form" style="padding-top:55px;">
+					<span class="login100-form-title p-b-20" style="font-weight:bold;">
+						Sign Up for Bonorara
 					</span>
 					
+					<br><br>
+					
+					<div style="width:100%">
+						<ul style="list-style:none; margin:0; padding:0;">
+							<li style="margin-left:30px; float: left; text-align: center;"><img src="${path}resources/images_member/agree.png" width="50px"><br/><span>1.약관동의</span></li>
+							<li style="margin-left:30px; float: left; text-align: center;"><img src="${path}resources/images_member/certificate_blue.png" width="45px" style="margin-bottom:5px;"><br/><span style="color:#6675df; font-weight:bold;">2.메일인증</span></li>
+							<li style="margin-left:30px; float: left; text-align: center;"><img src="${path}resources/images_member/edit.png" width="45px" style="margin-bottom:5px;"><br/><span>3.정보입력</span></li>
+							<li style="margin-left:30px; float: left; text-align: center;"><img src="${path}resources/images_member/finish.png" width="50px"><br/><span>4.가입완료</span></li>
+						</ul>
+					</div>
+					
+					<br><br><br><br><br>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
+						<button>이메일 인증 버튼</button>
 					</div>
 					
-					
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Password</span>
+						<span class="label-input100">여기는 인증번호 치는 곳 (인증 누르면 나옴)</span>
+						<button>확인버튼</button>
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
-
 						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
+							<!-- <a href="#" class="txt1">
+								Sign in
+							</a> -->
 						</div>
 					</div>
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
+						<button class="login100-form-btn" onClick="doAction();">
+							Next
 						</button>
-					</div>
-					
-					<div class="text-center p-t-46 p-b-20">
-						<span class="txt2">
-							or sign up using
-						</span>
-					</div>
-
-					<div class="login100-form-social flex-c-m">
-						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-							<i class="fa fa-facebook-f" aria-hidden="true"></i>
-						</a>
-
-						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</a>
 					</div>
 				</form>
 

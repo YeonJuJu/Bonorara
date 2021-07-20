@@ -20,4 +20,19 @@ public class MemberController {
 	public String login() {
 		return "member/login";
 	}
+	
+	@GetMapping("/join1")
+	public String join1() {
+		return "member/sign-up/join1";
+	}
+	
+	@RequestMapping("/join2")
+	public String join2() {
+		return "member/sign-up/join2";
+	}
+	
+	@GetMapping("/join3")
+	public String join3() {
+		return "member/sign-up/join3";
+	}
 }
