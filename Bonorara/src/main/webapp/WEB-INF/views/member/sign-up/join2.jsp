@@ -22,8 +22,44 @@
 	<link rel="stylesheet" type="text/css" href="${path}resources/css_member/main.css">
 
 	<script>
+		window.onload = function(){
+			var agree = getParameter("agree_chBox");
+			if(agree != 'Y'){
+				alert("약관에 동의하신 후 진행해주세요");
+				window.location.href = '/member/join1';
+			}
+		}
+		
+		function getParameter(name) {
+		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		        results = regex.exec(location.search);
+		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		
 		function doAction(){
 			alert('doAction();');
+		}
+		
+		function sendEmail(){
+			var mail = document.getElementById("email").value;
+			
+			if(mail == ""){
+				alert("이메일을 입력해주세요!");
+				return;
+			}
+			
+			$.ajax({
+				type : 'post',
+				url : '/sendMail.do',
+				data : {
+					email : mail
+				},
+				dataType : 'json',
+				success : function(data){
+					alert("email success");
+				}
+			});
 		}
 	</script>
 
@@ -51,18 +87,34 @@
 					
 					<br><br><br><br><br>
 					
+					<div style="font-weight:bold; margin: 0 5px 10px;">
+						Email
+					</div>
+					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" id="email" name="email">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
-						<button>이메일 인증 버튼</button>
+					</div>
+					
+					<div>
+						<button class="certificate_btn" style="float:right;" onClick="sendEmail();">전송</button>
+					</div>
+					
+					<br>
+					
+					<div style="font-weight:bold; margin: 0 5px 10px;">
+						Certification Number
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100"></span>
-						<span class="label-input100">여기는 인증번호 치는 곳 (인증 누르면 나옴)</span>
-						<button>확인버튼</button>
+						<span class="label-input100">Certification Number</span>
+					</div>
+
+					<div>
+						<button class="certificate_btn" style="float:right;">확인</button>
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
