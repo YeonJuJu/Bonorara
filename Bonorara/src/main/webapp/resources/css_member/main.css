@@ -498,7 +498,18 @@ input.input100 {
   background: #333333;
 }
 
+.certificate_btn {
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: #6675df;
+  color: #fff;
+}
 
+.certificate_btn:hover {
+  background: #333333;
+}
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
