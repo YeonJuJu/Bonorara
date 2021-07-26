@@ -21,7 +21,7 @@ public class MemberController {
 		return "member/login";
 	}
 	
-	@GetMapping("/join1")
+	@RequestMapping("/join1")
 	public String join1() {
 		return "member/sign-up/join1";
 	}

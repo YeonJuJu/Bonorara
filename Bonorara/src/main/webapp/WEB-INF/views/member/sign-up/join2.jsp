@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 <c:set var="path" value="${pageContext.request.contextPath}/" />
 
 <!DOCTYPE html>
@@ -22,23 +23,39 @@
 	<link rel="stylesheet" type="text/css" href="${path}resources/css_member/main.css">
 
 	<script>
+		var auth = false;
+		var isSend = false;
+		var authCode;
+	
 		window.onload = function(){
-			var agree = getParameter("agree_chBox");
-			if(agree != 'Y'){
-				alert("약관에 동의하신 후 진행해주세요");
-				window.location.href = '/member/join1';
+			var agree = document.getElementById("agree").value;
+			if(agree != "Y"){
+				alert("약관 동의 후 회원가입을 진행해주세요.");
+				document.getElementById("form_join2").action="join1";
+				document.getElementById("form_join2").submit();
 			}
 		}
 		
-		function getParameter(name) {
-		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-		        results = regex.exec(location.search);
-		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-		}
-		
 		function doAction(){
-			alert('doAction();');
+			var mail = document.getElementById("email").value;
+			var code = document.getElementById("code").value;
+			
+			if(mail == ""){
+				alert("이메일을 입력해주세요!");
+				document.getElementById("email").focus();
+				return;
+			}else if(code == ""){
+				alert("인증번호를 입력해주세요!");
+				document.getElementById("code").focus();
+				return;
+			}else if(auth == false){
+				alert("이메일 인증을 진행해주세요!");
+				document.getElementById("certi_btn").focus();
+				return;
+			}else{
+				document.getElementById("form_join2").action="join3";
+				document.getElementById("form_join2").submit();
+			}	
 		}
 		
 		function sendEmail(){
@@ -46,8 +63,15 @@
 			
 			if(mail == ""){
 				alert("이메일을 입력해주세요!");
+				document.getElementById("email").focus();
+				return;
+			}else if(isSend == true){
+				alert("이미 이메일이 전송이 완료되었습니다!");
+				document.getElementById("code").focus();
 				return;
 			}
+			
+			document.getElementById("email").disabled = true;
 			
 			$.ajax({
 				type : 'post',
@@ -57,9 +81,31 @@
 				},
 				dataType : 'json',
 				success : function(data){
-					alert("email success");
+					authCode = data.code;
+					isSend = true;
+					alert("이메일이 전송되었습니다!");
 				}
 			});
+		}
+		
+		function compareCertiCode(){
+			var inputCode = document.getElementById("code").value;
+			
+			if(inputCode == ""){
+				alert("인증번호를 입력해주세요!");
+				return;
+			}else if(inputCode != authCode){
+				alert("인증번호가 일치하지 않습니다!");
+				auth = false;
+				document.getElementById("code").focus();
+				return;
+			}else{
+				alert("이메일 인증이 완료되었습니다!");
+				auth = true;
+				document.getElementById("email").disabled = true;
+				document.getElementById("code").disabled = true;
+				return;
+			}
 		}
 	</script>
 
@@ -69,7 +115,8 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" style="padding-top:55px;">
+				<form id="form_join2" class="login100-form validate-form" method="post" style="padding-top:55px;">
+					<input type="hidden" id="agree" value="<c:out value="${param.agree_chBox}"/>"/>
 					<span class="login100-form-title p-b-20" style="font-weight:bold;">
 						Sign Up for Bonorara
 					</span>
@@ -98,7 +145,7 @@
 					</div>
 					
 					<div>
-						<button class="certificate_btn" style="float:right;" onClick="sendEmail();">전송</button>
+						<button id="email_btn" class="certificate_btn" type="button" style="float:right;" onClick="sendEmail();">전송</button>
 					</div>
 					
 					<br>
@@ -107,14 +154,14 @@
 						Certification Number
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" id="code" name="code">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Certification Number</span>
 					</div>
 
 					<div>
-						<button class="certificate_btn" style="float:right;">확인</button>
+						<button id="certi_btn" class="certificate_btn" type="button" style="float:right;" onClick="compareCertiCode();">확인</button>
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
@@ -127,7 +174,7 @@
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onClick="doAction();">
+						<button class="login100-form-btn" type="button" onClick="doAction();">
 							Next
 						</button>
 					</div>
