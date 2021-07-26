@@ -39,7 +39,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form id="form_join1" class="login100-form validate-form" style="padding-top:55px;">
+				<form id="form_join1" class="login100-form validate-form" method="post" style="padding-top:55px;">
 					<span class="login100-form-title p-b-20" style="font-weight:bold;">
 						Sign Up for Bonorara
 					</span>
